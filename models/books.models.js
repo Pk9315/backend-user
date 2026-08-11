@@ -15,10 +15,10 @@ const booksSchema = new mongoose.Schema(
             type: Number,
             required: true,
         },
-        genre: {
+        genre: [{
             type: String,
             enum:[ 'Fiction', 'Non-Fiction', 'Mystery', 'Thriller', 'Science Fiction', 'Fantasy', 'Romance', 'Historical', 'Biography', 'Self-help', 'Other']
-        },
+        }],
         language: {
             type: String,
             required: true,
@@ -47,4 +47,4 @@ const booksSchema = new mongoose.Schema(
 
 const Book = mongoose.model("Book", booksSchema)
 
-module.exports = Books
+module.exports = Book

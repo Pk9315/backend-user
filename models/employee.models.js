@@ -6,9 +6,9 @@ const employeeSchema = new mongoose.Schema(
         employeeName: String,
         desgination: String,
         employeeIdNo: String,
-        employeeDob: String,
+        employeeDob: Date,
         employeeEmail: String,
-        telephonNo: Number,
+        telephonNo: String,
         address: String,
     }
 )

@@ -4,8 +4,8 @@ const creditCardSchema = new mongoose.Schema(
     {
         companyName: String,
         username: String,
-        cardNumber: Number,
-        cardValid: Number,
+        cardNumber: String,
+        cardValid: String,
     }
 )
 

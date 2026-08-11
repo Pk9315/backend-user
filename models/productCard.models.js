@@ -7,14 +7,9 @@ const productCardSchema = new mongoose.Schema(
         productName: String,
         productPrice: Number,
         isOffer: Boolean,
- feature:[
-        {
-            productPixel: String,
-            productSensor: String, 
-            isWifiAvailable: Boolean, 
-            productWarranty: String,
-        }
-    ]
+ feature:{
+    type: String,
+ },
     },
    
 )

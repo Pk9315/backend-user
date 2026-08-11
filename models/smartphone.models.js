@@ -7,10 +7,10 @@ const smartphoneSchema = new mongoose.Schema({
     },
     model:{
         type: String,
-        requird: true,
+        required: true,
     },
     releaseYear: {
-        type: String,
+        type: Number,
         required: true
     },
     operatingSystem: {
@@ -41,6 +41,9 @@ const smartphoneSchema = new mongoose.Schema({
     features: [{
         type: String,
     }],
+    storage:{
+        type: String,
+    },
 
 
 }, {timestamps: true})

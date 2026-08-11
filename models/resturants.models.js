@@ -24,7 +24,7 @@ const resturantsSchema = new mongoose.Schema(
         rating: {
             type: Number,
             min: 0,
-            max: 10,
+            max: 5,
             default: 0,
         },
         specialDish: [{
@@ -32,9 +32,15 @@ const resturantsSchema = new mongoose.Schema(
         }],
         photoUrl: [{
             type: String,
-            resturantAmbience: String,
-            dishes: String,
-        }]
+            
+        }],
+        phone: {
+            type:String,
+        },
+        website:{
+            type: String,
+        },
+
     },{timestamps: true}
 )
 

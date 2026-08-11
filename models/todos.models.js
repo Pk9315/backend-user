@@ -11,9 +11,13 @@ const todosSchema = new mongoose.Schema(
         },
         priority:{
             type: String,
+            enum: ['Low', 'Medium', 'High']
         },
         dueDate: {
             type: Date,
+        },
+        tags:{
+            type:String,
         },
         completed:{
             type: Boolean,

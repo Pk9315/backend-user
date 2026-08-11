@@ -7,6 +7,13 @@ const productCardSchema = new mongoose.Schema(
         productName: String,
         productPrice: Number,
         isOffer: Boolean,
+        originalPrice: String, 
+        isDiscount: Boolean,
+        isDeliveryAvailable: Boolean,
+        isStock: Boolean,
+        warranty: String,
+        reviews: String,
+        rating: String, 
  feature:{
     type: String,
  },

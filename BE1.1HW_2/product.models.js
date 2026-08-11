@@ -10,6 +10,10 @@ const productSchema = new mongoose.Schema(
         isOffer: Boolean,
         features: String,
         productCompany: String,
+        rating: String,
+        warranty: String,
+        model: String,
+        reviews: String,
 
     }
 )

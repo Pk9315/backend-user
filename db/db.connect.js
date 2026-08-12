@@ -1,3 +1,4 @@
+const dns = require("dns");
 const mongoose = require("mongoose")
 require("dotenv").config()
 

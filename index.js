@@ -23,6 +23,7 @@ function seedData(){
 
             })
             newMovie.save()
+            console.log(newMovie)
         }
         
     }

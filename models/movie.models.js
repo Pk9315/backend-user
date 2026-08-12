@@ -26,7 +26,8 @@ const movieSchema = new mongoose.Schema({
     }],
     country: {
         type:String,
-        default: India,
+        default: "India"
+        
     },
     rating: {
         type: Number,

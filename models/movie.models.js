@@ -48,7 +48,7 @@ const movieSchema = new mongoose.Schema({
         type: String
     },
 
-timeStamps: true}
+}, {timeStamps: true}
 )
 const Movie = mongoose.model('Movie', movieSchema)
 

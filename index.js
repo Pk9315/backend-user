@@ -3,7 +3,7 @@ const fs = require("fs")
 const movie = require("./models/movie.models")
 
 const JsonData = fs.readFileSync("movie.json", "utf-8")
-const movieData = json.parse(JsonData)
+const movieData = JSON.parse(JsonData)
 function seedData(){
     try{
         for(const movieData of moviesData){

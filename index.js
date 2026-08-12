@@ -2,8 +2,8 @@ const {initializeDatabase} = require("./db/db.connect")
 const fs = require("fs")
 const Movie = require("./models/movie.models")
 initializeDatabase();
-const JsonData = fs.readFileSync("movie.json", "utf-8")
-const moviesData = JSON.parse(JsonData)
+const jsonData = fs.readFileSync("movie.json", "utf-8")
+const moviesData = JSON.parse(jsonData)
 function seedData(){
     try{
         for(const movieData of moviesData){

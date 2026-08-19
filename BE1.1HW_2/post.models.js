@@ -1,6 +1,15 @@
-const mongoose = requir("mongoose")
+const mongoose = require("mongoose")
 
-const postSchema = new mongoose.Schema({})
+const postSchema = new mongoose.Schema(
+    {
+        username: String,
+        caption: String,
+        postImageUrl: String,
+        isLike: Boolean,
+        comment: String,
+        isShare: Boolean,
+    }
+)
 
 const Post = mongoose.model("Post", postSchema)
 

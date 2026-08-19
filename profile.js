@@ -1,4 +1,4 @@
-const {initializeDatabase} = require("mongoose")
+const {initializeDatabase} = require("./db/db.connect")
 const fs = require("fs")
 const Profile = require("./models/profile.models")
 initializeDatabase()
@@ -20,10 +20,11 @@ function seedData(){
                 location: profileData.location,
                 portfolioUrl: profileData.portfolioUrl,
             })
-            console.log(newProfile.fullName)
+            newProfile.save()
         }
     }
     catch(error){
 
     }
 }
+seedData()

@@ -15,6 +15,6 @@ const twitterSchema = new mongoose.Schema({
 
 })
 
-const Profile = mongoose.model('Profile', twitterSchema)
+const Twitter = mongoose.model('Twitter', twitterSchema)
 
-module.exports = Profile
+module.exports = Twitter

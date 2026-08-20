@@ -1,7 +1,7 @@
 const {initializeDatabase} = require("./db/db.connect")
 const fs = require('fs')
 const Car = require("./BE1_Assignment/models/Cars.models")
-const { json } = require("stream/consumers")
+
 
 initializeDatabase()
 

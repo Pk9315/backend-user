@@ -1,8 +1,6 @@
 const {initializeDatabase} = require("./db/db.connect")
 const fs = require('fs')
 const Car = require("./BE1_Assignment/models/Cars.models")
-
-
 initializeDatabase()
 
 const jsonData = fs.readFileSync("cars.json", "utf-8")
@@ -27,8 +25,9 @@ function carDetails(){
                 photos: carData.photos,
                 inMarket: carData.inMarket,
             })
-            newCars.save()
+            
         }
+        newCars.save()
     }
     catch(error){
         console.log("error seeding the data", error)

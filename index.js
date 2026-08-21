@@ -28,4 +28,4 @@ async function createdMovie(newMovie) {
         throw error
     }
   }
-  createdMovie(newMovie)
+createdMovie(newMovie)

@@ -1,34 +1,30 @@
 const {initializeDatabase} = require("./db/db.connect")
-const fs = require("fs")
 const Movie = require("./models/movie.models")
 initializeDatabase();
-const jsonData = fs.readFileSync("movie.json", "utf-8")
-const moviesData = JSON.parse(jsonData)
-function seedData(){
-    try{
-        for(const movieData of moviesData){
-            const newMovie = new Movie({
-                title: movieData.title,
-                releaseYear: movieData.releaseYear,
-                genre: movieData.genre,
-                director: movieData.director,
-                actors: movieData.actors,
-                language: movieData.language,
-                country: movieData.country,
-                rating: movieData.rating,
-                plot: movieData.plot,
-                awards: movieData.awards,
-                posterUrl: movieData.posterUrl,
-                trailerUrl: movieData.trailerUrl
 
-            })
-            newMovie.save()
-          
-        }
-        
+
+const newMovie =  {
+    title: "karan arjun",
+    releaseYear: 1995,
+    genre: ["Drama"],
+    director: "Aditya Chopra",
+    actors: ["Salman khan", "Kajol"],
+    language: "Hindi",
+    country: "India",
+    rating: 9.5,
+    plot: "that movie was based on the rebirth of two brothers.",
+    awards: "IFA Filmfare Awards",
+    posterUrl: "https://example.com/poster1.jpg",
+    trailerUrl: "https://example.com/trailer1.mp4",
+  }
+
+async function createdMovie(newMovie) {
+    try{
+        const movie = new Movie(newMovie)
+        const saveMovie = await movie.save()
     }
     catch(error){
-            console.log("error seeding the data", error)
-        }
-}
-seedData()
+        throw error
+    }
+  }
+  createdMovie(newMovie)

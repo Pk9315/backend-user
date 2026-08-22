@@ -9,7 +9,7 @@ const newMovie =  {
     genre: ["Drama"],
     director: "Aditya Kumar Chopra",
     actors: ["Salman khan", "Kajol"],
-    language: "Hindi",
+    language: ["Hindi"],
     country: "India",
     rating: 9.5,
     plot: "that movie was based on the rebirth of two brothers.",

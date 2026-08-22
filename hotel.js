@@ -5,7 +5,7 @@ initializeDatabase()
 
 const newHotel = {
   name: "New Hotel",
-  category: "Mid-Range",
+  category: ["Mid-Range"],
   location: "123 Main Street, Frazer Town",
   rating: 4.0,
   reviews: [],

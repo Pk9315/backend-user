@@ -18,7 +18,7 @@ const newMovie =  {
     trailerUrl: "https://example.com/trailer1.mp4",
   }
 
-async function createdMovie(newMovie) {
+ async function createdMovie(newMovie) {
     try{
         const movie = new Movie(newMovie)
         const saveMovie = await movie.save()

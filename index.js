@@ -28,4 +28,41 @@ const newMovie =  {
         throw error
     }
   }
-createdMovie(newMovie)
+// createdMovie(newMovie)
+
+// find a movie with particular title
+
+async function readMovieTitle(movieTitle){
+    try{
+        const movieRead = await Movie.findOne({title: movieTitle})
+        console.log(movieRead)
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+// readMovieTitle("Dilwale Dulhania Le Jayenge")
+
+// get a all the movie in the database
+async function readAllMovies(){
+    try{
+        const readAllMovie = await Movie.find()
+        console.log(readAllMovie)
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+// readAllMovies()
+
+// get a movie by director Name
+async function readByDirector(directorName){
+    try{
+        const readByDirectorName = await Movie.findOne({director: directorName})
+        console.log(readByDirectorName)
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+readByDirector("S. S. Rajamouli")

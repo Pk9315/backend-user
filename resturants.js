@@ -18,8 +18,8 @@ const newResturants = {
   menuUrl: "https://example.com/menu",
   photos: ["https://example.com/photo1.jpg", "https://example.com/photo2.jpg"],
 };
-const newRestaurant = {
-  name: "Somi",
+const somiResturants = {
+    name: "Somi",
   cuisine: ["Greek"],
   location: "11 Main Road, Gem",
   rating: 4.3,
@@ -32,9 +32,9 @@ const newRestaurant = {
   isDeliveryAvailable: true,
   menuUrl: "https://somi-example.com/menu",
   photos: ["https://example.com/somi-photo1.jpg", "https://example.com/somi-photo2.jpg"],
-}; 
-const newRestaurant = {
-  name: "Yo China",
+}
+const yoChinaResturants = {
+    name: "Yo China",
   cuisine: ["Chinese", "Italian"],
   location: "MG Road, Bangalore",
   rating: 3.9,
@@ -47,8 +47,7 @@ const newRestaurant = {
   isDeliveryAvailable: false,
   menuUrl: "https://yo-example.com/menu",
   photos: ["https://example.com/yo-photo1.jpg", "https://example.com/yo-photo2.jpg", "https://example.com/yo-photo3.jpg"]
-};
-
+}
 async function openNewResturant(newResturants){
     try{
         const resturant = new Resturant(newResturants)
@@ -58,4 +57,62 @@ async function openNewResturant(newResturants){
         throw error
     }
 }
-openNewResturant(newResturants)
+// openNewResturant(newResturants)
+// openNewResturant(somiResturants)
+// openNewResturant(yoChinaResturants)
+
+async function readAllResturantData(){
+    try{
+        const readResturant = await Resturant.find()
+       console.log(readResturant) 
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+// readAllResturantData()
+
+async function readNewResturant(resturants){
+    try{
+        const readNewResturant = await Resturant.findOne({name: resturants})
+        console.log(readNewResturant.reservationsNeeded)
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+// readNewResturant("Cha Cha")
+// readNewResturant("Yo China")
+
+async function readAllReservation(){
+    try{
+        const reservation = await Resturant.find({reservationsNeeded: true})
+        console.log(reservation)
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+// readAllReservation()
+
+async function readPhoneNumber(resturantNumber){
+    try{
+        const phoneNumber = await Resturant.findOne({phoneNumber: resturantNumber})
+        console.log(phoneNumber)
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+// readPhoneNumber("+1288997392")
+
+async function findResturantsCuisine(dishName){
+    try{
+        const findCuisine = await Resturant.find({cuisine: dishName})
+        console.log(findCuisine)
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+findResturantsCuisine("Italian")

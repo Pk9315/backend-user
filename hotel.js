@@ -119,7 +119,7 @@ async function hasResturantInHotel(){
         console.log(error)
     }
 }
-// hasResturantInHotel()
+hasResturantInHotel()
 
 async function hotelWithMidRange(){
     try{

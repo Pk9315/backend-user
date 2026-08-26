@@ -65,4 +65,44 @@ async function readByDirector(directorName){
         console.log(error)
     }
 }
-readByDirector("S. S. Rajamouli")
+// readByDirector("S. S. Rajamouli")
+
+// find a movie by id and update it's rating
+async function updateMovie(movieId, dataToUpdate){
+    try{
+        const movieUpdated = await Movie.findByIdAndUpdate(movieId, dataToUpdate, {new:true})
+        console.log(movieUpdated)
+    }
+    catch(error){
+        console.log("Error in updating movie Rating: ", error)
+    }
+}
+// updateMovie("6a7c5724a2e3e0340395c029", {rating: 9})
+// updateMovie("6a7c5724a2e3e0340395c02b", {rating: 6})
+
+// find the movie by Id and update its releaseYear
+
+async function updateMovieByReleaseYear(movieId, dataToUpdate){
+    try{
+        const updateReleaseYear = await Movie.findByIdAndUpdate(movieId, dataToUpdate, {new: true})
+        console.log(updateReleaseYear)
+    }
+    catch(error){
+        console.log("error in updating movie release year: ", error)
+    }
+}
+// updateMovieByReleaseYear("6a7c5724a2e3e0340395c02b", {releaseYear: 2010})
+
+// find one data and update it's value
+
+async function updateMovieDetails(movieTitle, dataToUpdate){
+    try{
+        const updatedMovie = await Movie.findOneAndUpdate({title: movieTitle}, dataToUpdate, {new:true})
+        console.log(updatedMovie)
+    }
+    catch(error){
+        console.log("error in changing data: ", error)
+    }
+
+}
+updateMovieDetails("PK", {releaseYear: 2011})

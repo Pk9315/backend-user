@@ -92,6 +92,7 @@ async function readHotelByName(hotel){
     try{
         const readHotel = await Hotel.findOne({name: hotel})
         console.log(readHotel)
+        
     }
     catch(error){
         console.log(error)
@@ -119,7 +120,7 @@ async function hasResturantInHotel(){
         console.log(error)
     }
 }
-hasResturantInHotel()
+// hasResturantInHotel()
 
 async function hotelWithMidRange(){
     try{
@@ -165,4 +166,61 @@ async function readHotelByPhoneNumber(number){
         console.log(error)
     }
 }
-readHotelByPhoneNumber("+1299655890")
+// readHotelByPhoneNumber("+129655890")
+
+
+async function updatedHotelResturant(hotelId, dataToUpdate){
+    try{
+        const updateResturant = await Hotel.findByIdAndUpdate(hotelId, dataToUpdate, {new: true})
+        console.log(updateResturant)
+    }
+    catch(error){
+        console.log("error")
+    }
+}
+// updatedHotelResturant("6a8c53aaea0ebe7154ea7f50", {rating: 5})
+
+async function updateHotel(hotelId, dataToUpdate){
+    try{
+        const hotelTimeUpdate = await Hotel.findByIdAndUpdate(hotelId, dataToUpdate, {new : true})
+        console.log(hotelTimeUpdate)
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+// updateHotel("6a8c53aaea0ebe7154ea7f4f", {checkOutTime: "11:00AM"})
+
+async function updatedHotelRating(hotelName, dataToUpdate){
+    try{
+        const updateRating = await Hotel.findOneAndUpdate({name: hotelName}, dataToUpdate, {new: true})
+        console.log(updateRating)
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+// updatedHotelRating("Sunset Resort", {rating: 4.2})
+
+async function updatePhoneNumber(hotelNumber, dataToUpdate){
+    try{
+        const hotelNumberUpdate = await Hotel.findOneAndUpdate({phoneNumber: hotelNumber}, dataToUpdate, {new: true})
+        console.log(hotelNumberUpdate)
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+updatePhoneNumber("+1234555890", {phoneNumber: "+1997687392"})
+
+// async function readHotelByName(hotel){
+//     try{
+//         const readHotel = await Hotel.findOne({name: hotel})
+//         console.log(readHotel)
+//         console.log(readHotel.phoneNumber)
+//     }
+//     catch(error){
+//         console.log(error)
+//     }
+// }
+// readHotelByName("Sunset Resort")

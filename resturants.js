@@ -93,7 +93,7 @@ async function readAllReservation(){
         console.log(error)
     }
 }
-// readAllReservation()
+readAllReservation()
 
 async function readPhoneNumber(resturantNumber){
     try{
@@ -115,4 +115,41 @@ async function findResturantsCuisine(dishName){
         console.log(error)
     }
 }
-findResturantsCuisine("Italian")
+// findResturantsCuisine("Italian")
+
+
+
+
+
+async function updateResturant(resturantId, dataToUpdate){
+    try{
+        const resturantUpdated = await Resturant.findByIdAndUpdate(resturantId, dataToUpdate, {new:true})
+        console.log(resturantUpdated)
+    }
+    catch(error){
+        console.log("error")
+    }
+}
+// updateResturant("6a8c39e08d9e159e8ab1e89e", {rating: 4.1})
+
+async function updateResturantName(resturantName, dataToUpdate){
+    try{
+        const updateResturant = await Resturant.findOneAndUpdate({name: resturantName}, dataToUpdate, {new: true})
+        console.log(updateResturant)
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+// updateResturantName("Somi", {name: "Som Sarovar"})
+
+async function updateResturantPhone(resturantNumber, dataToUpdate){
+    try{
+        const resturantPhoneUpdate = await Resturant.findOneAndUpdate({phoneNumber : resturantNumber},  dataToUpdate, {new: true})
+        console.log(resturantPhoneUpdate)
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+updateResturantPhone("+1288997392", {isDeliveryAvailable: true})

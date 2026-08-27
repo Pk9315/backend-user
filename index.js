@@ -105,4 +105,29 @@ async function updateMovieDetails(movieTitle, dataToUpdate){
     }
 
 }
-updateMovieDetails("PK", {releaseYear: 2011})
+// updateMovieDetails("PK", {releaseYear: 2011})
+
+// find a movie by ID and delete its data from database
+async function deleteMovieById(movieId){
+    try{
+        const deleteMovieId = await Movie.findByIdAndDelete(movieId)
+        console.log("Movie has deleted succussfully: ", deleteMovieId)
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+// deleteMovieById("6a88bcea43b5630842ed1c6b")
+
+// find a movie by the Name and delete from the database
+
+async function deletedMovieByName(movieTitle){
+    try{
+        const movieDeleted = await Movie.findOneAndDelete({title: movieTitle})
+        console.log("The has deleted: ", movieDeleted)
+    }
+    catch(error){
+        console.log("Error in movie Deleted: ", error)
+    }
+}
+deletedMovieByName("karan arjun")

@@ -152,4 +152,25 @@ async function updateResturantPhone(resturantNumber, dataToUpdate){
         console.log(error)
     }
 }
-updateResturantPhone("+1288997392", {isDeliveryAvailable: true})
+// updateResturantPhone("+1288997392", {isDeliveryAvailable: true})
+
+async function deleteResturantById(resturantId){
+    try{
+        const deleteId = await Resturant.findByIdAndDelete(resturantId)
+        console.log(deleteId)
+    }
+    catch(error){
+        console.log("Error in delete Resturant By id: ", error)
+    }
+}
+// deleteResturantById("6a89543f0fe9401efdaa6a99")
+
+async function deleteRestaurantByName(resturantName){
+    try{
+        const deletedByName = await Resturant.findOneAndDelete({name: resturantName})
+    }
+    catch(error){
+        console.log("Error while deleting the resturant by name: ", error)
+    }
+}
+deleteRestaurantByName("Cha Cha")

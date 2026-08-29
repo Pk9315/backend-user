@@ -211,7 +211,7 @@ async function updatePhoneNumber(hotelNumber, dataToUpdate){
         console.log(error)
     }
 }
-updatePhoneNumber("+1234555890", {phoneNumber: "+1997687392"})
+// updatePhoneNumber("+1234555890", {phoneNumber: "+1997687392"})
 
 // async function readHotelByName(hotel){
 //     try{
@@ -224,3 +224,25 @@ updatePhoneNumber("+1234555890", {phoneNumber: "+1997687392"})
 //     }
 // }
 // readHotelByName("Sunset Resort")
+
+async function deleteHotelById(hotelId){
+    try{
+        const deleteId = await Hotel.findByIdAndDelete(hotelId)
+        console.log(deleteId)
+    }
+    catch(error){
+        console.log("Error while delete the hotel by Id: ", error)
+    }
+}
+// deleteHotelById("6a89585c77359febf11cd2bf")
+
+async function deleteHotelByPhoneNumber(hotelNumber){
+    try{
+        const deleteByPhone = await Hotel.findOneAndDelete({phoneNumber: hotelNumber})
+        console.log(deleteByPhone)
+    }
+    catch(error){
+        console.log("Error while deleting number: ", error)
+    }
+}
+deleteHotelByPhoneNumber("+1234567890")

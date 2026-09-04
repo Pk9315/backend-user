@@ -163,7 +163,7 @@ async function deleteResturantById(resturantId){
         console.log("Error in delete Resturant By id: ", error)
     }
 }
-// deleteResturantById("6a89543f0fe9401efdaa6a99")
+deleteResturantById("6a89543f0fe9401efdaa6a99")
 
 async function deleteRestaurantByName(resturantName){
     try{
@@ -173,4 +173,4 @@ async function deleteRestaurantByName(resturantName){
         console.log("Error while deleting the resturant by name: ", error)
     }
 }
-deleteRestaurantByName("Cha Cha")
+// deleteRestaurantByName("Cha Cha")

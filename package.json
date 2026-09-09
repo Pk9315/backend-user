@@ -12,6 +12,15 @@
   "type": "commonjs",
   "dependencies": {
     "dotenv": "^17.4.2",
+    "express": "^5.2.1",
     "mongoose": "^9.9.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pk9315/backend-user.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Pk9315/backend-user/issues"
+  },
+  "homepage": "https://github.com/Pk9315/backend-user#readme"
 }

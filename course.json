@@ -1,0 +1,50 @@
+[
+  {
+    "courseName": "Full Stack Web Development",
+    "subject": "Web Development",
+    "medium": "English",
+    "duration": "6 Months",
+    "price": 25000,
+    "instructor": "Rahul Sharma"
+  },
+  {
+    "courseName": "JavaScript Fundamentals",
+    "subject": "JavaScript",
+    "medium": "Hindi",
+    "duration": "3 Months",
+    "price": 12000,
+    "instructor": "Amit Verma"
+  },
+  {
+    "courseName": "Python Programming",
+    "subject": "Python",
+    "medium": "English",
+    "duration": "4 Months",
+    "price": 15000,
+    "instructor": "Neha Gupta"
+  },
+  {
+    "courseName": "Data Science",
+    "subject": "Data Science",
+    "medium": "English",
+    "duration": "6 Months",
+    "price": 30000,
+    "instructor": "Vikash Kumar"
+  },
+  {
+    "courseName": "Digital Marketing",
+    "subject": "Marketing",
+    "medium": "Hindi",
+    "duration": "2 Months",
+    "price": 8000,
+    "instructor": "Priya Singh"
+  },
+  {
+    "courseName": "Frontend Development",
+    "subject": "HTML CSS JavaScript",
+    "medium": "English",
+    "duration": "3 Months",
+    "price": 14000,
+    "instructor": "Rohit Mehta"
+  }
+]

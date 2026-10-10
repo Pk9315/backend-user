@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "dotenv": "^18.0.5",
+    "express": "^5.3.0",
     "mongoose": "^9.10.3"
   }
 }

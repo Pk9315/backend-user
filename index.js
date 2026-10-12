@@ -1,34 +1,50 @@
+const express = require("express")
+const app = express()
+
 const {initializeDatabase} = require("./db/db.connect")
 const Movie = require("./models/movie.models")
+
+app.use(express.json())
 initializeDatabase();
 
 
-const newMovie =  {
-    title: "karan arjun",
-    releaseYear: 1995,
-    genre: ["Drama"],
-    director: "Aditya Kumar Chopra",
-    actors: ["Salman khan", "Kajol"],
-    language: ["Hindi"],
-    country: "India",
-    rating: 9.5,
-    plot: "that movie was based on the rebirth of two brothers.",
-    awards: "IFA Filmfare Awards",
-    posterUrl: "https://example.com/poster1.jpg",
-    trailerUrl: "https://example.com/trailer1.mp4",
-  }
+// const newMovie =  {
+//     title: "karan arjun",
+//     releaseYear: 1995,
+//     genre: ["Drama"],
+//     director: "Aditya Kumar Chopra",
+//     actors: ["Salman khan", "Kajol"],
+//     language: ["Hindi"],
+//     country: "India",
+//     rating: 9.5,
+//     plot: "that movie was based on the rebirth of two brothers.",
+//     awards: "IFA Filmfare Awards",
+//     posterUrl: "https://example.com/poster1.jpg",
+//     trailerUrl: "https://example.com/trailer1.mp4",
+//   }
 
  async function createdMovie(newMovie) {
     try{
         const movie = new Movie(newMovie)
         const saveMovie = await movie.save()
-        console.log("New movie data: ", saveMovie)
+        return saveMovie
     }
     catch(error){
         throw error
     }
   }
 // createdMovie(newMovie)
+
+// How to write an API for Post
+app.post("/movies", async(req,res) =>{
+    try{
+        const savedMovie = await createdMovie(req.body)
+        res.status(201).json({message: "Movie Added Successfully.", movies: savedMovie})
+    }
+    catch(error){
+        res.status(500).json({error: "Failed to add movie"})
+    }
+})
 
 // find a movie with particular title
 
@@ -130,4 +146,9 @@ async function deletedMovieByName(movieTitle){
         console.log("Error in movie Deleted: ", error)
     }
 }
-deletedMovieByName("karan arjun")
+// deletedMovieByName("karan arjun")
+
+const PORT = 3000
+app.listen(PORT, () =>{
+    console.log("Server is running on Port. ", PORT)
+})

@@ -1,6 +1,10 @@
+const express = require("express")
+const app = express()
+
 const {initializeDatabase} = require("./db/db.connect")
 const Resturant = require("./BE2.1_HW1/model/restuarant.models")
 
+app.use(express.json())
 initializeDatabase()
 
 // const newResturants = {
@@ -52,6 +56,7 @@ async function openNewResturant(newResturants){
     try{
         const resturant = new Resturant(newResturants)
         const saveResturant = await resturant.save()
+        return saveResturant
     }
     catch(error){
         throw error
@@ -60,6 +65,20 @@ async function openNewResturant(newResturants){
 // openNewResturant(newResturants)
 // openNewResturant(somiResturants)
 // openNewResturant(yoChinaResturants)
+
+
+// How to write an API for POST for restaurant
+// 1. Create an API with route "/restaurants" to create a new restaurant data in the Database. 
+// Test your API with Postman.
+app.post("/restaurants", async(req,res) =>{
+    try{
+        const savedRestaurant = await openNewResturant(req.body)
+        res.status(201).json({message: "Restaurants added successfully.", restaurants: savedRestaurant})
+    }
+    catch(error){
+        res.status(500).json({error: "failed to add restaurant data"})
+    }
+})
 
 async function readAllResturantData(){
     try{
@@ -93,7 +112,7 @@ async function readAllReservation(){
         console.log(error)
     }
 }
-readAllReservation()
+// readAllReservation()
 
 async function readPhoneNumber(resturantNumber){
     try{
@@ -163,7 +182,7 @@ async function deleteResturantById(resturantId){
         console.log("Error in delete Resturant By id: ", error)
     }
 }
-deleteResturantById("6a89543f0fe9401efdaa6a99")
+// deleteResturantById("6a89543f0fe9401efdaa6a99")
 
 async function deleteRestaurantByName(resturantName){
     try{
@@ -174,3 +193,8 @@ async function deleteRestaurantByName(resturantName){
     }
 }
 // deleteRestaurantByName("Cha Cha")
+
+const PORT = 3000
+app.listen(PORT, () =>{
+    console.log("Server is running on Port.", PORT)
+})

@@ -143,13 +143,30 @@ async function findResturantsCuisine(dishName){
 async function updateResturant(resturantId, dataToUpdate){
     try{
         const resturantUpdated = await Resturant.findByIdAndUpdate(resturantId, dataToUpdate, {new:true})
-        console.log(resturantUpdated)
+        return resturantUpdated
     }
     catch(error){
         console.log("error")
     }
 }
 // updateResturant("6a8c39e08d9e159e8ab1e89e", {rating: 4.1})
+
+
+// 1. Create an API to update a restaurant data by their ID in the Database.
+//  Update the cuisine of an existing restaurant. Test your API with Postman.
+app.post("/resturants/:resturantId", async(req,res) =>{
+    try{
+        const updatedRestaurantById = await updateResturant(req.params.resturantId, req.body)
+        if(updatedRestaurantById){
+            res.status(200).json({message: "restaurants updated Successfully.", updatedRestaurantById: updatedRestaurantById})
+        }else{
+            res.status(404).json({error: "restaurant not found"})
+        }
+    }
+    catch(error){
+        res.status(500).json({error: "Failed to updated resturant"})
+    }
+})
 
 async function updateResturantName(resturantName, dataToUpdate){
     try{
@@ -176,7 +193,7 @@ async function updateResturantPhone(resturantNumber, dataToUpdate){
 async function deleteResturantById(resturantId){
     try{
         const deleteId = await Resturant.findByIdAndDelete(resturantId)
-        console.log(deleteId)
+        return deleteId
     }
     catch(error){
         console.log("Error in delete Resturant By id: ", error)
@@ -184,6 +201,20 @@ async function deleteResturantById(resturantId){
 }
 // deleteResturantById("6a89543f0fe9401efdaa6a99")
 
+// 1. Create an API with route "/restaurants/:restaurantId" 
+// to delete a restaurant data by their ID in the Database. Test your API with Postman.
+
+app.delete("/restaurant/:resturantId", async(req,res) =>{
+    try{
+        const getDeletedRestaurant = await deleteResturantById(req.params.resturantId)
+        if(getDeletedRestaurant){
+            res.status(200).json({message: "Restaurant Deleted Successfully"})
+        }
+    }
+    catch(error){
+        res.status(500).json({error: "Failed to delete Restaurant data"})
+    }
+})
 async function deleteRestaurantByName(resturantName){
     try{
         const deletedByName = await Resturant.findOneAndDelete({name: resturantName})

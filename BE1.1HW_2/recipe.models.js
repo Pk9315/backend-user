@@ -2,19 +2,41 @@ const mongoose = require("mongoose")
 
 const recipeSchema = new mongoose.Schema(
     {
-        recipeImageUrl: String,
-        recipeName: String,
-        serving: String,
-        preparingTime: String,
-        cookingTime: String,
-        direction: String,
-        ingredients: [{
+        title: {
             type: String,
+            required: true
+        },
+        author:{
+            type: String,
+            required: true,
+        },
+        difficulty:{
+            type: String,
+            enum:['Easy','Intermediate','Difficult']
+        },
+        prepTime:{
+            type: Number,
+            required: true,
+        },
+        cookTime:{
+            type: Number,
+            required:true,
+        },
+        ingredients:[{
+            type: String,
+            required: true,
         }],
-        notes: String,
-    }
+        instruction:[{
+            type: String,
+            required: true,
+        }],
+        imageUrl:{
+            type: String,
+            required: true,
+        },
 
-)
+}
+,{timestamps: true})
 
 const Recipe = mongoose.model("Recipe", recipeSchema)
 

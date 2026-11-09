@@ -1,11 +1,17 @@
 // import express
-const express = require("express")
-const app = express()
 
-const {initializeDatabase} = require("./db/db.connect")
-const Recipe = require("./BE1.1HW_2/recipe.models")
+const express = require("express");
+const cors = require("cors");
 
-app.use(express.json())
+const app = express();
+
+// Middleware
+app.use(express.json());
+app.use(cors());
+
+// Database and Model
+const { initializeDatabase } = require("./db/db.connect");
+const Recipe = require("./BE1.1HW_2/recipe.models");
 initializeDatabase()
 
 // Create an Api for GET to Perform our recipe models

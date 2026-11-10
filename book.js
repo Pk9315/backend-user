@@ -1,11 +1,12 @@
 const express = require("express")
 const app = express()
-
+const cors = require("cors")
 const {initializeDatabase} = require("./db/db.connect")
 // const fs = require("fs")
 const Book = require("./models/books.models")
 
 app.use(express.json())
+app.use(cors())
 initializeDatabase()
 
 // const jsonData = fs.readFileSync("books.json", "utf-8")

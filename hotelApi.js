@@ -1,10 +1,12 @@
 const express = require("express")
 const app = express()
+const cors = require("cors")
 
 const {initializeDatabase} = require("./db/db.connect")
 const Hotel = require("./BE2.1_HW2/model/hotel.models")
 
 app.use(express.json())
+app.use(cors())
 initializeDatabase()
 
 // 1. Create an API with route "/hotels" to read all hotels from the Database. Test your API with Postman.

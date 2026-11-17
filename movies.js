@@ -1,10 +1,14 @@
-const express = require("express")
-const app = express()
+const express = require("express");
+const cors = require("cors");
 
+const app = express();
+
+// Middleware
+app.use(express.json());
+app.use(cors());
 const {initializeDatabase} = require("./db/db.connect")
 const Movie = require("./models/movie.models")
 
-app.use(express.json())
 initializeDatabase();
 
 
@@ -46,30 +50,64 @@ app.post("/movies", async(req,res) =>{
     }
 })
 
+// GET
+// app.get("/movies", (req,res) =>{
+//     res.send("This is for Movies")
+// })
 // find a movie with particular title
 
 async function readMovieTitle(movieTitle){
     try{
         const movieRead = await Movie.findOne({title: movieTitle})
-        console.log(movieRead)
+        return movieRead
     }
     catch(error){
         console.log(error)
     }
 }
+app.get("/movies/:title", async(req,res)=> {
+    try{
+        const getAllMovies = await readMovieTitle(req.params.title)
+        if(getAllMovies){
+            res.json(getAllMovies)
+        }else{
+            res.status(400).json({error: "Movie  not found"})
+        }
+    }
+    catch(error){
+        res.status(500).json({error: "Failed to fetch data"})
+    }
+    
+})
 // readMovieTitle("Dilwale Dulhania Le Jayenge")
 
 // get a all the movie in the database
 async function readAllMovies(){
     try{
         const readAllMovie = await Movie.find()
-        console.log(readAllMovie)
+        return readAllMovie
     }
     catch(error){
         console.log(error)
     }
 }
 // readAllMovies()
+app.get("/movies", async(req,res) =>{
+    try{
+        const readMovie = await readAllMovies()
+        if(readMovie.length != 0){
+            res.json(readMovie)
+        }else{
+            res.status(404).json({error: "Movies not found"})
+        }
+    }
+    catch(error){
+        res.status(500).json({error: "Failed to fetching data"})
+    }
+})
+
+
+
 
 // get a movie by director Name
 async function readByDirector(directorName){

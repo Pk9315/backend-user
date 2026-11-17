@@ -1,10 +1,12 @@
 const express = require("express")
 const app = express()
+const cors = require("cors")
 
 const {initializeDatabase} = require("./db/db.connect")
 const Hotel = require("./BE2.1_HW2/model/hotel.models")
 
 app.use(express.json())
+app.use(cors())
 initializeDatabase()
 
 // const newHotel = {
@@ -82,6 +84,11 @@ async function findHotel(newHotels){
 // findHotel(lakeViewHotel)
 // findHotel(sunsetResort)
 
+app.get("/hotel", (req,res)=>{
+    res.send("We have all types of room")
+})
+
+
 // 1. Create an API with route "/hotels" to create a new hotel data in the Database. 
 // Test your API with Postman.
 
@@ -97,14 +104,27 @@ app.post("/hotels", async(req,res) =>{
 
 async function readAllHotel(){
     try{
-        const readAllHotel = await Hotel.find()
-        console.log(readAllHotel)
+        const readHotel = await Hotel.find()
+        return readHotel
     }
     catch(error){
         console.log(error)
     }
 }
 // readAllHotel()
+app.get("/hotels", async(req,res) =>{
+    try{
+        const getAllHotel = await readAllHotel()
+        if(getAllHotel.length != 0){
+            res.json(getAllHotel)
+        }else{
+            res.status(404).json({error: "Recipe not found"})
+        }
+    }
+    catch(error){
+        res.status(500).json({error: "Failed to fetch data"})
+    }
+})
 
 async function readHotelByName(hotel){
     try{

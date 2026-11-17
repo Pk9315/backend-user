@@ -9,21 +9,21 @@ const movieSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    genre: [{
+    genre: {
         type: String,
         enum: ["Action", "Drama", "Comedy", "Romance", "thriller","Fantasy","Sci-fi","Horror","Sports","Musical","Others"]
-    }],
+    },
     director: {
         type: String,
         required: true
     },
-    actors: [{
+    actors: {
         type: String,
-    }],
-    language: [{
+    },
+    language: {
         type: String,
         required: true
-    }],
+    },
     country: {
         type:String,
         default: "India"
